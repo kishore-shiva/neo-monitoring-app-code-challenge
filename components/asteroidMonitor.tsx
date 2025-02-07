@@ -8,8 +8,9 @@ import {
   StyleSheet,
   Image,
   Switch,
-  Modal
+  Modal,
 } from "react-native";
+import { Checkbox } from "react-native-paper";
 import { NearEarthObject } from "../models/NearEarthObject";
 import { fetchNEOData } from "../models/NeoData";
 import { FontAwesome } from "@expo/vector-icons";
@@ -24,6 +25,9 @@ export const AsteroidMonitor = () => {
   const [date, setDate] = useState(moment().tz("America/Chicago").format("YYYY-MM-DD").split("T")[0]);
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(true);
+  const [showOnlyHazardous, setShowOnlyHazardous] = useState(false);
+
+  const filteredData = showOnlyHazardous ? neoData.filter(item => item.hazardous) : neoData;
 
   const hazardousImg = require("../assets/images/neo-hazardous-yes.webp");
   const notHazardousImg = require("../assets/images/hazardous-no.avif");
@@ -61,30 +65,58 @@ export const AsteroidMonitor = () => {
     return <ActivityIndicator size="large" color="#0000ff" />;
   }
 
+  // {/* <View style={styles.checkBoxContainer}>
+  //           <View style={styles.checkBoxWrapper}>
+  //             <Checkbox
+  //               status={showOnlyHazardous ? "checked" : "unchecked"}
+  //               onPress={() => setShowOnlyHazardous(!showOnlyHazardous)}
+  //               color={showOnlyHazardous ? "red" : "black"}
+  //               uncheckedColor="black"
+  //             />
+  //           </View>
+  //           <Text style={[styles.checkboxLabel, isDarkMode ? styles.darkText : styles.lightText]}>
+  //             Show only Hazardous
+  //           </Text>
+  //         </View> */}
+
   return (
-    <GlobalContext.Provider value={{ isDarkMode}}>
     <View style={[styles.safePlace, isDarkMode ? styles.darkBackground : styles.lightBackground]}>
       <FlatList
-        data={neoData}
+        data={filteredData}
         keyExtractor={(item) => item.id}
         ListHeaderComponent={
-          <View style={styles.headerContainer}>
+          <View>
+            <View style={styles.headerContainer}>
             <Text style={[styles.header, isDarkMode ? styles.darkText : styles.lightText]}>Asteroids for {date}</Text>
-        <TouchableOpacity style={styles.footerIcon}>
-          <FontAwesome name="sun-o" size={22} color={isDarkMode ? "orange" : "black"}/>
-        </TouchableOpacity>
-            <View style={styles.switchWrapper}>
-              <Switch
-                value={isDarkMode}
-                onValueChange={toggleTheme}
-                trackColor={{ false: "#767577", true: "black" }}
-                thumbColor={isDarkMode ? "#f5dd4b" : "#f4f3f4"}
-                ios_backgroundColor="#767577"
-              />
+            <TouchableOpacity style={styles.footerIcon}>
+              <FontAwesome name="sun-o" size={22} color={isDarkMode ? "orange" : "black"}/>
+            </TouchableOpacity>
+                <View style={styles.switchWrapper}>
+                  <Switch
+                    value={isDarkMode}
+                    onValueChange={toggleTheme}
+                    trackColor={{ false: "#767577", true: "black" }}
+                    thumbColor={isDarkMode ? "#f5dd4b" : "#f4f3f4"}
+                    ios_backgroundColor="#767577"
+                  />
+                </View>
+              <TouchableOpacity>
+                <FontAwesome name="moon-o" size={22} color={isDarkMode ? "white" : "#230046"}/>
+              </TouchableOpacity>
             </View>
-          <TouchableOpacity>
-            <FontAwesome name="moon-o" size={22} color={isDarkMode ? "white" : "#230046"}/>
-          </TouchableOpacity>
+            <View style={styles.checkBoxContainer}>
+             <View style={isDarkMode? styles.checkBoxWrapperDark : styles.checkBoxWrapper}>
+               <Checkbox
+                 status={showOnlyHazardous ? "checked" : "unchecked"}
+                 onPress={() => setShowOnlyHazardous(!showOnlyHazardous)}
+                 color={showOnlyHazardous ? "red" : "black"}
+                 uncheckedColor="black"
+               />
+             </View>
+             <Text style={[styles.checkboxLabel, isDarkMode ? styles.darkText : styles.lightText]}>
+               Show only Hazardous
+             </Text>
+           </View>
           </View>
         }
         renderItem={({ item }) => (
@@ -138,7 +170,6 @@ export const AsteroidMonitor = () => {
         </TouchableOpacity>
       </View>
     </View>
-    </GlobalContext.Provider>
   );
 };
 
@@ -245,6 +276,26 @@ const styles = StyleSheet.create({
     borderColor: "white",
     borderRadius: 25,
     padding: 0,
+  },
+  checkBoxContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginLeft: 10, 
+  },
+  checkboxLabel: {
+    fontFamily: "AvenirNext-DemiBold",
+    fontSize: 20,
+    marginLeft: 5,
+  },
+  checkBoxWrapper: {
+    borderWidth: 1,
+    borderColor: "black",
+    borderRadius: 25,
+  },
+  checkBoxWrapperDark: {
+    borderWidth: 1,
+    borderColor: "white",
+    borderRadius: 25,
   },
 });
 
