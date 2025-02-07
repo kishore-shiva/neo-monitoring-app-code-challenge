@@ -29,6 +29,9 @@ Samples of the developed application:
     <td><img src="https://github.com/user-attachments/assets/d7791b61-a1f0-4849-941d-cf06252a1112" width="300"/></td>
     <td><img src="https://github.com/user-attachments/assets/dc6ef349-894a-4bba-93aa-43b84c7e4bc1" width="300"/></td>
   </tr>
+  <tr>
+     <td><img src="https://github.com/user-attachments/assets/0f1bdfc2-d82e-4e9b-b6e4-aff1df857ce6" width="400"/></td>
+  </tr>
 </table>
 
 
