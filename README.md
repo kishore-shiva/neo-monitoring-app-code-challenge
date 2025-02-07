@@ -1,4 +1,4 @@
-# Welcome to your Expo app 👋
+# Welcome to The NEO-Asteroid Expo app 👋
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
@@ -13,38 +13,18 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 2. Start the app
 
    ```bash
-    npx expo start
+    npx expo start --clear
    ```
 
-In the output, you'll find options to open the app in a
+Samples of the developed application:
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+![Simulator Screenshot - iPhone 15 - 2025-02-07 at 11 50 42](https://github.com/user-attachments/assets/c289b367-8507-4046-98d6-1cca45fd00cf)
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+![Simulator Screenshot - iPhone 15 - 2025-02-07 at 11 50 56](https://github.com/user-attachments/assets/4bfb29b7-e653-41fe-ba65-defba6103b4c)
 
-## Get a fresh project
+![Simulator Screenshot - iPhone 15 - 2025-02-07 at 11 59 03](https://github.com/user-attachments/assets/d7791b61-a1f0-4849-941d-cf06252a1112)
 
-When you're ready, run:
+![Simulator Screenshot - iPhone 15 - 2025-02-07 at 12 00 26](https://github.com/user-attachments/assets/dc6ef349-894a-4bba-93aa-43b84c7e4bc1)
 
-```bash
-npm run reset-project
-```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
 
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
