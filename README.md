@@ -14,6 +14,9 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 
    ```bash
     npx expo start --clear
+   <Press "i" to run in iOS>
+   <Press "a" to run in Android>
+   <Press "w" to open in your default web browser>
    ```
 
 Samples of the developed application:
